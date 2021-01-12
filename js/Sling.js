@@ -1,0 +1,35 @@
+class Slingshot{
+
+    constructor(bodyA, pointB){
+
+        var options = {
+            bodyA: bodyA,
+            pointB: pointB,
+            stiffness: 1,
+            angularStiffness:1,
+            length: 220
+            
+        };
+
+        this.chain = Constraint.create(options);
+        this.pointX=bodyA.x;
+        this.pointY=bodyA.y-250;
+        this.pointB=pointB;
+        World.add(world, this.chain);
+
+    }
+    display(){
+
+        if(this.chain.bodyA){
+            var pointA=this.chain.bodyA.position;
+            var pointB=this.pointB;
+            push();
+            strokeWeight(3.5);
+            stroke("#fff");
+            line(pointB.x,pointB.y,pointA.x,pointA.y);
+            pop();
+
+        }
+        
+    }
+}
